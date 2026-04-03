@@ -53,70 +53,73 @@ export default function CatalogCard({ catalog }: CatalogCardProps) {
     } as const);
 
   return (
-    <article className="catalog-card group flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-white/10 bg-[rgba(12,18,26,0.74)] shadow-panel transition duration-300 hover:-translate-y-1 hover:border-signal-400/40">
-      <div className="relative aspect-[4/3] overflow-hidden p-6" style={{ background: palette.surface }}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,242,232,0.18),transparent_24%)]" />
-        <div className="relative flex h-full flex-col justify-between">
-          <div className="flex items-start justify-between gap-3">
-            <span className="catalog-card-badge inline-flex rounded-full border border-white/14 bg-white/8 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-sand-50/86 backdrop-blur">
-              {catalog.category}
-            </span>
-            <span
-              className="rounded-full px-3 py-1.5 text-xs font-semibold"
-              style={{
-                color: palette.accent,
-                backgroundColor: `${palette.accent}1A`,
-                border: `1px solid ${palette.accent}33`,
-              }}
-            >
-              {catalog.year}
-            </span>
-          </div>
-
-          <div className="space-y-4">
-            <div className="catalog-card-meta inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/20 px-3 py-1.5 text-xs font-medium text-sand-50/78">
-              <FileText className="h-4 w-4" />
-              Official catalog access
+    <a
+      href={catalog.pdfUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Open ${catalog.title}`}
+      className="group block h-full"
+    >
+      <article className="catalog-card flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-white/10 bg-[rgba(12,18,26,0.74)] shadow-panel transition duration-300 hover:-translate-y-1 hover:border-signal-400/40">
+        <div className="relative aspect-[4/3] overflow-hidden p-6" style={{ background: palette.surface }}>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,242,232,0.18),transparent_24%)]" />
+          <div className="relative flex h-full flex-col justify-between">
+            <div className="flex items-start justify-between gap-3">
+              <span className="catalog-card-badge inline-flex rounded-full border border-white/14 bg-white/8 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-sand-50/86 backdrop-blur">
+                {catalog.category}
+              </span>
+              <span
+                className="rounded-full px-3 py-1.5 text-xs font-semibold"
+                style={{
+                  color: palette.accent,
+                  backgroundColor: `${palette.accent}1A`,
+                  border: `1px solid ${palette.accent}33`,
+                }}
+              >
+                {catalog.year}
+              </span>
             </div>
 
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-100/60">{catalog.brand}</p>
-                <h3 className="mt-3 max-w-[14rem] font-display text-3xl font-bold leading-[0.95] text-sand-50">
-                  {catalog.title}
-                </h3>
+            <div className="space-y-4">
+              <div className="catalog-card-meta inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/20 px-3 py-1.5 text-xs font-medium text-sand-50/78">
+                <FileText className="h-4 w-4" />
+                Official catalog access
               </div>
-              <div className="hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 text-sand-50/78 transition group-hover:flex">
-                <ArrowUpRight className="h-5 w-5" />
+
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-100/60">{catalog.brand}</p>
+                  <h3 className="mt-3 max-w-[14rem] font-display text-3xl font-bold leading-[0.95] text-sand-50">
+                    {catalog.title}
+                  </h3>
+                </div>
+                <div className="hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 text-sand-50/78 transition group-hover:flex">
+                  <ArrowUpRight className="h-5 w-5" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div
-          className="absolute -bottom-8 -right-4 font-display text-[7rem] font-bold leading-none text-white/5 transition duration-500 group-hover:scale-110"
-          aria-hidden="true"
-        >
-          {catalog.brand.charAt(0)}
-        </div>
-      </div>
-
-      <div className="catalog-card-body flex flex-1 flex-col gap-6 p-6 sm:p-7">
-        <p className="catalog-card-description flex-1 text-sm leading-7 text-sand-100/72">{catalog.description}</p>
-        <div className="signal-divider" />
-        <div className="flex items-center justify-between gap-4">
-          <span className="catalog-card-brand text-xs font-medium uppercase tracking-[0.22em] text-sand-100/52">{catalog.brand}</span>
-          <a
-            href={catalog.pdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="catalog-card-cta inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-sand-50 transition hover:border-signal-400/40 hover:bg-white/9"
+          <div
+            className="absolute -bottom-8 -right-4 font-display text-[7rem] font-bold leading-none text-white/5 transition duration-500 group-hover:scale-110"
+            aria-hidden="true"
           >
-            <Download className="h-4 w-4" />
-            <span>View Catalog</span>
-          </a>
+            {catalog.brand.charAt(0)}
+          </div>
         </div>
-      </div>
-    </article>
+
+        <div className="catalog-card-body flex flex-1 flex-col gap-6 p-6 sm:p-7">
+          <p className="catalog-card-description flex-1 text-sm leading-7 text-sand-100/72">{catalog.description}</p>
+          <div className="signal-divider" />
+          <div className="flex items-center justify-between gap-4">
+            <span className="catalog-card-brand text-xs font-medium uppercase tracking-[0.22em] text-sand-100/52">{catalog.brand}</span>
+            <span className="catalog-card-cta inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-sand-50 transition hover:border-signal-400/40 hover:bg-white/9">
+              <Download className="h-4 w-4" />
+              <span>View Catalog</span>
+            </span>
+          </div>
+        </div>
+      </article>
+    </a>
   );
 }

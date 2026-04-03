@@ -221,9 +221,10 @@ export default function HomePage() {
       <section className="section-space">
         <div className="page-shell grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
           <SectionHeading
-            eyebrow="What the new UX prioritizes"
-            title="The experience now introduces the business clearly, then moves people toward the tasks they came to complete."
-            subtitle="The brand leads the first impression, while the rest of the homepage guides visitors toward categories, catalogs, and direct project support."
+            eyebrow="What We Supply"
+            title="Explore the core product categories trusted by homes, retailers, and project teams."
+            subtitle="From switches and wiring to lighting, conduits, and fast project support, this website helps you reach the right product range quickly."
+            invert
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -250,6 +251,7 @@ export default function HomePage() {
               eyebrow="Catalog library"
               title="Featured documents stay front and center."
               subtitle="The catalog experience is now treated like the main product utility of the website, not a secondary afterthought."
+              invert
             />
             <Link href="/catalogs" className="button-secondary self-start">
               Explore the full library
