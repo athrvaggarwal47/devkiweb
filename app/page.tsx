@@ -42,7 +42,7 @@ const FADE_UP: Variants = {
 const HERO_STATS = [
   { value: "50+", label: "Years of market trust" },
   { value: "1000+", label: "Products across trusted brands" },
-  { value: "6", label: "Key partner brands" },
+  { value: `${brands.length}`, label: "Key partner brands" },
   { value: "B2B", label: "Bulk and project support" },
 ];
 
@@ -100,22 +100,28 @@ export default function HomePage() {
           >
             <div className="space-y-8">
               <motion.div variants={FADE_UP} className="eyebrow">
-                Northern India&apos;s modern electrical supply desk
+                Trusted electrical supply since 1975
               </motion.div>
 
               <motion.h1
                 variants={FADE_UP}
-                className="max-w-4xl font-display text-5xl font-bold leading-[0.92] tracking-[-0.07em] text-sand-50 sm:text-6xl lg:text-[5.5rem]"
+                className="max-w-4xl font-display text-5xl font-bold leading-[0.9] tracking-[-0.07em] text-sand-50 sm:text-6xl lg:text-[6rem]"
               >
-                Built for projects.
-                <br />
-                Backed by fifty years
-                <span className="block text-signal-400">of trust.</span>
+                Devki Nandan
+                <span className="block text-signal-400">& Sons</span>
               </motion.h1>
 
+              <motion.p
+                variants={FADE_UP}
+                className="max-w-3xl font-display text-2xl font-semibold leading-[1.05] tracking-[-0.05em] text-sand-50/92 sm:text-3xl"
+              >
+                Electrical goods, project supply, and catalog-led sourcing for contractors, retailers, architects, and
+                procurement teams.
+              </motion.p>
+
               <motion.p variants={FADE_UP} className="max-w-2xl text-base leading-8 text-sand-100/74 sm:text-lg">
-                Devki Nandan & Sons helps contractors, retailers, architects, and procurement teams source trusted
-                electrical products faster through clear catalogs, stronger wayfinding, and direct support.
+                Built for real buying journeys, the site now makes it easier to explore trusted brands, compare ranges,
+                and move directly into a quote or project conversation.
               </motion.p>
 
               <motion.div variants={FADE_UP} className="flex flex-col gap-4 sm:flex-row">
@@ -187,23 +193,6 @@ export default function HomePage() {
                     </p>
                   </div>
                 </div>
-
-                <div className="mt-6 rounded-[1.5rem] border border-white/8 bg-black/16 p-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">
-                        Why this direction fits
-                      </p>
-                      <p className="mt-2 text-sm leading-7 text-sand-100/68">
-                        Electrical procurement needs trust and speed. The new UX delivers both without losing legacy.
-                      </p>
-                    </div>
-                    <div className="rounded-[1.25rem] border border-copper-400/28 bg-copper-400/12 px-4 py-3 text-right">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-copper-400">Fast path</p>
-                      <p className="mt-1 text-xl font-bold text-sand-50">Catalog → Quote</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -233,8 +222,8 @@ export default function HomePage() {
         <div className="page-shell grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
           <SectionHeading
             eyebrow="What the new UX prioritizes"
-            title="The experience now starts with tasks people actually come here to complete."
-            subtitle="Instead of making visitors decode the brand first, the homepage now guides them toward categories, catalogs, and direct project support."
+            title="The experience now introduces the business clearly, then moves people toward the tasks they came to complete."
+            subtitle="The brand leads the first impression, while the rest of the homepage guides visitors toward categories, catalogs, and direct project support."
           />
 
           <div className="grid gap-4 sm:grid-cols-2">

@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "919418033069"; // Updated phone number
+export const WHATSAPP_NUMBER = "919418000309";
 
 export function getWhatsAppLink(message?: string): string {
   const encoded = message

@@ -77,21 +77,19 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-copper-400" />
                 <span className="leading-relaxed">
-                  Rajpur, Rampur Bushahr
-                  <br />
-                  Himachal Pradesh 172001
+                  Devki Nandan and Sons, Rampur Bushahr
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 shrink-0 text-copper-400" />
-                <a href="tel:+919418033069" className="transition hover:text-sand-50">
-                  +91 94180 33069
+                <a href="tel:+919418000309" className="transition hover:text-sand-50">
+                  +91 94180 00309
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-copper-400" />
-                <a href="mailto:contact@devkinandansons.com" className="transition hover:text-sand-50">
-                  contact@devkinandansons.com
+                <a href="mailto:dns.rampur@gmail.com" className="transition hover:text-sand-50">
+                  dns.rampur@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">

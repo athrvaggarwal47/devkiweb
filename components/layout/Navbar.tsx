@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -87,6 +88,13 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
+            <ThemeToggle
+              className={cn(
+                isScrolled || !isHome
+                  ? "bg-white/5"
+                  : "bg-black/15"
+              )}
+            />
             <Link
               href="/catalogs"
               className={cn(
@@ -147,6 +155,7 @@ export default function Navbar() {
               })}
 
               <div className="mt-4 space-y-3 rounded-[1.5rem] border border-white/8 bg-white/4 p-4">
+                <ThemeToggle className="w-full justify-center border-white/8 bg-white/6" />
                 <p className="text-sm leading-6 text-sand-100/70">
                   Browse catalogs, compare brands, and move directly into a project inquiry without digging through the site.
                 </p>

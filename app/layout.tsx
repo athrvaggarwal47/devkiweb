@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -57,8 +58,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${displayFont.variable} ${bodyFont.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+            (() => {
+              try {
+                const storedTheme = localStorage.getItem("theme");
+                const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+                const theme = storedTheme || systemTheme;
+                document.documentElement.dataset.theme = theme;
+              } catch {
+                document.documentElement.dataset.theme = "dark";
+              }
+            })();
+          `}
+        </Script>
         <Navbar />
         <main className="flex-1 w-full flex flex-col">{children}</main>
         <Footer />

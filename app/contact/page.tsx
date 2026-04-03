@@ -130,14 +130,14 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-3 text-sm text-ink-700">
                   <Phone className="h-5 w-5 shrink-0 text-signal-500" />
-                  <a href="tel:+919418033069" className="transition hover:text-ink-950">
-                    +91 94180 33069
+                  <a href="tel:+919418000309" className="transition hover:text-ink-950">
+                    +91 94180 00309
                   </a>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-ink-700">
                   <Mail className="h-5 w-5 shrink-0 text-signal-500" />
-                  <a href="mailto:contact@devkinandansons.com" className="transition hover:text-ink-950">
-                    contact@devkinandansons.com
+                  <a href="mailto:dns.rampur@gmail.com" className="transition hover:text-ink-950">
+                    dns.rampur@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-ink-700">

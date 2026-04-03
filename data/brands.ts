@@ -49,12 +49,36 @@ export const brands: Brand[] = [
     categories: ["Conduits", "Fittings", "PVC Accessories"],
   },
   {
-    id: "finolex",
-    name: "Finolex",
-    slug: "finolex",
-    tagline: "India's Finest Wires & Cables",
-    color: "#E87722",
-    categories: ["Wires", "Cables", "Electrical Accessories"],
+    id: "philips",
+    name: "Philips",
+    slug: "philips",
+    tagline: "Professional Lighting & Smart Illumination",
+    color: "#0066CC",
+    categories: ["Lighting", "LED Systems", "Smart Lighting"],
+  },
+  {
+    id: "bajaj",
+    name: "Bajaj",
+    slug: "bajaj",
+    tagline: "Reliable Fans, Lighting & Appliances",
+    color: "#F15A29",
+    categories: ["Lighting", "Fans", "Appliances"],
+  },
+  {
+    id: "racold",
+    name: "Racold",
+    slug: "racold",
+    tagline: "Water Heating Solutions for Homes & Projects",
+    color: "#E1251B",
+    categories: ["Water Heaters", "Geysers", "Storage Solutions"],
+  },
+  {
+    id: "usha",
+    name: "Usha",
+    slug: "usha",
+    tagline: "Trusted Fans, Appliances & Everyday Comfort",
+    color: "#D91F26",
+    categories: ["Fans", "Appliances", "Home Comfort"],
   },
 ];
 
@@ -65,7 +89,10 @@ export const brandCategories = [
   "Panasonic",
   "Greatwhite",
   "Diplast",
-  "Finolex",
+  "Philips",
+  "Bajaj",
+  "Racold",
+  "Usha",
 ];
 
 export const productCategories = [
@@ -76,4 +103,6 @@ export const productCategories = [
   "Fans",
   "Fixtures",
   "Conduits",
+  "Water Heaters",
+  "Appliances",
 ];
