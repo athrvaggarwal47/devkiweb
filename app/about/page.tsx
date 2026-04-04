@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, BadgeCheck, Building2, Clock3, Layers3, Users } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { brands } from "@/data/brands";
 
 const MILESTONES = [
   {
@@ -43,7 +44,7 @@ const OPERATING_VALUES = [
 
 const NUMBERS = [
   { label: "Legacy years", value: "50+" },
-  { label: "Partner brands", value: "6" },
+  { label: "Partner brands", value: `${brands.length}` },
   { label: "Primary use cases", value: "Retail + B2B" },
   { label: "Response mindset", value: "Fast and direct" },
 ];

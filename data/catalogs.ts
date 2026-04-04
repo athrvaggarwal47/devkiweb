@@ -66,15 +66,28 @@ export const catalogs: Catalog[] = [
   },
   {
     id: "havells-fans-2024",
-    title: "Havells Fan Collection 2024",
+    title: "Havells Fan Price List 2026",
     brand: "Havells",
     brandId: "havells",
     category: "Fans",
-    year: 2024,
+    year: 2026,
     description:
-      "Ceiling fans, wall fans, exhaust fans with premium design finishes.",
-    pdfUrl: "https://consumer.havells.com/consumer/",
+      "Current fan list prices and specification callouts for residential and commercial models.",
+    pdfUrl: "/catalogs/Havells_Fan_List_Price_20260402.pdf",
     coverGradient: "from-blue-900 to-indigo-700",
+    featured: false,
+  },
+  {
+    id: "havells-modern-fans-2026",
+    title: "Havells Modern Fan Range 2026",
+    brand: "Havells",
+    brandId: "havells",
+    category: "Fans",
+    year: 2026,
+    description:
+      "Modern fan designs with aerodynamic blades, smart controllers, and curated finish options.",
+    pdfUrl: "/catalogs/Havells_Modern_Fan.pdf",
+    coverGradient: "from-sky-800 to-blue-700",
     featured: false,
   },
   {

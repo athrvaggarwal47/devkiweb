@@ -45,6 +45,7 @@ const BRAND_STYLES: Record<string, { accent: string; surface: string }> = {
 };
 
 export default function CatalogCard({ catalog }: CatalogCardProps) {
+  const isPdfCatalog = catalog.pdfUrl.toLowerCase().endsWith(".pdf");
   const palette =
     BRAND_STYLES[catalog.brandId] ??
     ({
@@ -83,7 +84,7 @@ export default function CatalogCard({ catalog }: CatalogCardProps) {
             <div className="space-y-4">
               <div className="catalog-card-meta inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/20 px-3 py-1.5 text-xs font-medium text-sand-50/78">
                 <FileText className="h-4 w-4" />
-                Official catalog access
+                {isPdfCatalog ? "PDF catalog" : "Official catalog access"}
               </div>
 
               <div className="flex items-end justify-between gap-4">
@@ -115,7 +116,7 @@ export default function CatalogCard({ catalog }: CatalogCardProps) {
             <span className="catalog-card-brand text-xs font-medium uppercase tracking-[0.22em] text-sand-100/52">{catalog.brand}</span>
             <span className="catalog-card-cta inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-sand-50 transition hover:border-signal-400/40 hover:bg-white/9">
               <Download className="h-4 w-4" />
-              <span>View Catalog</span>
+              <span>{isPdfCatalog ? "Open PDF" : "View Catalog"}</span>
             </span>
           </div>
         </div>

@@ -22,7 +22,7 @@ export const brands: Brand[] = [
     slug: "havells",
     tagline: "Premium Electrical Equipment",
     color: "#0047AB",
-    categories: ["Lighting", "Fans", "Switches", "Wiring"],
+    categories: ["Lighting", "Fans", "Switches", "Wiring", "Air Coolers"],
   },
   {
     id: "panasonic",
@@ -101,6 +101,7 @@ export const productCategories = [
   "Wiring",
   "Switches",
   "Fans",
+  "Air Coolers",
   "Fixtures",
   "Conduits",
   "Water Heaters",
