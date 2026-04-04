@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppCTA from "@/components/ui/WhatsAppCTA";
+import { Analytics } from "@vercel/analytics/next";
 
 const displayFont = Space_Grotesk({
   subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
         <main className="flex-1 w-full flex flex-col">{children}</main>
         <Footer />
         <WhatsAppCTA />
+        <Analytics />
       </body>
     </html>
   );
