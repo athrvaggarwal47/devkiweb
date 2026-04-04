@@ -8,45 +8,45 @@ import { brands } from "@/data/brands";
 
 const MILESTONES = [
   {
-    year: "1975",
+    year: "1957",
     title: "The business begins",
-    description: "Devki Nandan & Sons starts with a simple promise: dependable products, practical guidance, and honest business.",
+    description: "Devki Nandan & Sons was established with a simple commitment: dependable products, fair dealing, and practical support for local customers.",
   },
   {
-    year: "1990s",
-    title: "Brand relationships deepen",
-    description: "Long-term partnerships with premium electrical brands turn the business into a trusted destination for quality-first buyers.",
+    year: "Over the decades",
+    title: "Trust grows through relationships",
+    description: "Long-standing ties with reliable electrical brands and customers helped the business become a known and dependable name in the region.",
   },
   {
     year: "Today",
-    title: "Legacy meets clarity",
-    description: "The new digital experience translates that trust into a cleaner catalog, better page flow, and faster project response.",
+    title: "Still serving with the same values",
+    description: "The business continues to support households, retailers, contractors, and project buyers with clarity, responsiveness, and trusted product options.",
   },
 ];
 
 const OPERATING_VALUES = [
   {
-    title: "Long-view relationships",
-    description: "A multigenerational business should feel consistent, stable, and easy to rely on when requirements are time-sensitive.",
+    title: "Relationship-driven business",
+    description: "Customers return because they value consistency, honest guidance, and a supplier they can rely on over time.",
     icon: Users,
   },
   {
-    title: "Brand-led confidence",
-    description: "Customers remember names they trust, so the site now gives those brands more structure and clearer pathways into catalogs.",
+    title: "Confidence through brands",
+    description: "Trusted partner brands help buyers feel assured about product quality, range depth, and long-term reliability.",
     icon: BadgeCheck,
   },
   {
-    title: "Operational clarity",
-    description: "The best UX for this business is practical: better routing, less guesswork, and stronger next actions at every stage.",
+    title: "Practical and responsive support",
+    description: "The focus stays on understanding the requirement clearly and helping the customer move forward without unnecessary confusion.",
     icon: Layers3,
   },
 ];
 
 const NUMBERS = [
-  { label: "Legacy years", value: "50+" },
+  { label: "Years in business", value: "69+" },
   { label: "Partner brands", value: `${brands.length}` },
-  { label: "Primary use cases", value: "Retail + B2B" },
-  { label: "Response mindset", value: "Fast and direct" },
+  { label: "Customer segments", value: "Home + Trade + Projects" },
+  { label: "Approach", value: "Direct and dependable" },
 ];
 
 export default function AboutPage() {
@@ -58,16 +58,16 @@ export default function AboutPage() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-end">
             <SectionHeading
               eyebrow="About the business"
-              title="Three generations of dependable electrical supply, translated into a clearer digital experience."
-              subtitle="This page now explains the business the same way people already experience it offline: trustworthy, direct, and steady."
+              title="A trusted electrical business serving the region since 1957."
+              subtitle="Devki Nandan & Sons is built on long-term relationships, dependable brands, and practical support for both everyday and project-based requirements."
               invert
             />
 
             <div className="surface-panel rounded-[2rem] p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">Why the new direction works</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">What defines the business</p>
               <p className="mt-4 text-sm leading-7 text-sand-100/72">
-                The site no longer treats heritage as decoration. It uses legacy to support credibility, while the layout does the practical work
-                of helping visitors understand what the business offers and why they should trust it.
+                Over the years, the business has earned trust by staying straightforward in the way it serves customers:
+                good products, clear advice, and dependable follow-through.
               </p>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -87,9 +87,9 @@ export default function AboutPage() {
         <div className="page-shell">
           <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
             <SectionHeading
-              eyebrow="A concise timeline"
-              title="The story is now easier to scan, but still feels substantial."
-              subtitle="Instead of over-styling the history, the page presents it in a way that supports trust and keeps momentum."
+              eyebrow="Business journey"
+              title="A history shaped by dependable service and repeat trust."
+              subtitle="The story matters because it explains why customers continue to rely on the business across generations."
             />
 
             <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -116,9 +116,9 @@ export default function AboutPage() {
         <div className="page-shell grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
           <div className="surface-panel rounded-[2rem] p-7 sm:p-9">
             <SectionHeading
-              eyebrow="How the business shows up"
-              title="The operating model is simple: trusted products, clear advice, and responsive support."
-              subtitle="That is the tone this redesign brings forward everywhere, from the homepage to contact."
+              eyebrow="How the business works"
+              title="Trusted products, clear advice, and responsive support."
+              subtitle="That practical approach has helped the business stay relevant for households, trade buyers, and project requirements alike."
               invert
             />
 
@@ -139,25 +139,25 @@ export default function AboutPage() {
           </div>
 
           <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">What visitors should leave understanding</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">What people should understand</p>
             <div className="mt-6 space-y-5">
               <div className="rounded-[1.5rem] border border-ink-950/8 bg-white p-5">
                 <div className="flex items-center gap-3">
                   <Clock3 className="h-5 w-5 text-signal-500" />
-                  <h3 className="font-display text-2xl font-bold tracking-[-0.04em] text-ink-950">This is a legacy business</h3>
+                  <h3 className="font-display text-2xl font-bold tracking-[-0.04em] text-ink-950">This is an established business</h3>
                 </div>
                 <p className="mt-3 text-sm leading-7 text-ink-700">
-                  The page now communicates heritage without relying on theatrical styling that can distract from trust.
+                  More than six decades of service gives customers confidence that the business values continuity, reliability, and reputation.
                 </p>
               </div>
 
               <div className="rounded-[1.5rem] border border-ink-950/8 bg-white p-5">
                 <div className="flex items-center gap-3">
                   <Building2 className="h-5 w-5 text-signal-500" />
-                  <h3 className="font-display text-2xl font-bold tracking-[-0.04em] text-ink-950">This is a supply partner</h3>
+                  <h3 className="font-display text-2xl font-bold tracking-[-0.04em] text-ink-950">This is a dependable supply partner</h3>
                 </div>
                 <p className="mt-3 text-sm leading-7 text-ink-700">
-                  Visitors can tell this is not only a brand story, but a business ready to support real procurement needs.
+                  The business is positioned to support real purchase decisions, repeat buying, and project conversations, not just one-time browsing.
                 </p>
               </div>
             </div>

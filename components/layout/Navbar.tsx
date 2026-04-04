@@ -57,7 +57,7 @@ export default function Navbar() {
                 Devki Nandan
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-sand-100/60">
-                Project supply since 1975
+                Established 1957
               </span>
             </span>
           </Link>
@@ -157,7 +157,7 @@ export default function Navbar() {
               <div className="mt-4 space-y-3 rounded-[1.5rem] border border-white/8 bg-white/4 p-4">
                 <ThemeToggle className="w-full justify-center border-white/8 bg-white/6" />
                 <p className="text-sm leading-6 text-sand-100/70">
-                  Browse catalogs, compare brands, and move directly into a project inquiry without digging through the site.
+                  Explore trusted brands, review product catalogs, and get in touch directly for supply support.
                 </p>
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="button-primary w-full">
                   Start a Project

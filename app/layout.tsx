@@ -21,13 +21,13 @@ const bodyFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://devkinandansons.com"),
+  metadataBase: new URL("https://www.devkinandanandsons.com"),
   title: {
     default: "Devki Nandan & Sons | Electrical Goods & Project Supply",
     template: "%s | Devki Nandan & Sons",
   },
   description:
-    "A refined digital procurement experience for premium electrical goods, trusted brands, catalog discovery, and fast project support from Devki Nandan & Sons.",
+    "Established in 1957, Devki Nandan & Sons supplies trusted electrical brands, catalog support, and dependable project assistance in Rampur Bushahr and across Himachal Pradesh.",
   keywords: [
     "electrical goods Himachal Pradesh",
     "bulk electrical supply",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Devki Nandan & Sons | Electrical Goods & Project Supply",
     description:
-      "Built for projects, retailers, and procurement teams looking for trusted brands, direct support, and fast catalog access.",
+      "Established in 1957, Devki Nandan & Sons serves homes, retailers, contractors, and project teams with trusted electrical brands and dependable supply support.",
     type: "website",
     siteName: "Devki Nandan & Sons",
     url: "/",

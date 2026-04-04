@@ -6,23 +6,24 @@ import { ArrowRight, FileStack, Search, SlidersHorizontal, X } from "lucide-reac
 import CatalogCard from "@/components/ui/CatalogCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { brands } from "@/data/brands";
-import { catalogs } from "@/data/catalogs";
+import type { Catalog } from "@/data/catalogs";
 import { cn } from "@/lib/utils";
 
 type CatalogsPageClientProps = {
   initialBrand: string;
+  initialCatalogs: Catalog[];
 };
 
-export default function CatalogsPageClient({ initialBrand }: CatalogsPageClientProps) {
+export default function CatalogsPageClient({ initialBrand, initialCatalogs }: CatalogsPageClientProps) {
   const resolvedBrand = brands.some((brand) => brand.slug === initialBrand) ? initialBrand : "all";
   const [searchQuery, setSearchQuery] = useState("");
   const [activeBrand, setActiveBrand] = useState(resolvedBrand);
   const [activeCategory, setActiveCategory] = useState("all");
 
   const deferredQuery = useDeferredValue(searchQuery.trim().toLowerCase());
-  const categories = Array.from(new Set(catalogs.map((catalog) => catalog.category))).sort();
+  const categories = Array.from(new Set(initialCatalogs.map((catalog) => catalog.category))).sort();
 
-  const filteredCatalogs = catalogs.filter((catalog) => {
+  const filteredCatalogs = initialCatalogs.filter((catalog) => {
     const matchesSearch =
       deferredQuery.length === 0 ||
       catalog.title.toLowerCase().includes(deferredQuery) ||
@@ -38,6 +39,10 @@ export default function CatalogsPageClient({ initialBrand }: CatalogsPageClientP
   const activeFilters =
     Number(searchQuery.trim().length > 0) + Number(activeBrand !== "all") + Number(activeCategory !== "all");
 
+  const suggestedBrands = brands.filter((brand) => brand.slug !== activeBrand).slice(0, 4);
+
+  const suggestedCategories = categories.filter((category) => category !== activeCategory).slice(0, 4);
+
   return (
     <>
       <section className="relative overflow-hidden pt-32 pb-18 sm:pt-36 sm:pb-22">
@@ -45,18 +50,18 @@ export default function CatalogsPageClient({ initialBrand }: CatalogsPageClientP
         <div className="page-shell">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-end">
             <SectionHeading
-              eyebrow="Catalog library"
-              title="Find the right electrical range without the usual friction."
-              subtitle="Search, narrow by brand or category, and open the exact document you need for procurement or retail comparison."
+              eyebrow="Catalogs"
+              title="Browse partner catalogs by brand, category, and requirement."
+              subtitle="This library brings together product documents from trusted brands so customers can compare ranges and move forward with more clarity."
               invert
             />
 
             <div className="surface-panel rounded-[2rem] p-6 sm:p-7">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">Live utility</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">Catalog access</p>
                   <h2 className="mt-2 font-display text-3xl font-bold tracking-[-0.05em] text-sand-50">
-                    Refined for quick catalog discovery.
+                    Find the right document quickly.
                   </h2>
                 </div>
                 <div className="rounded-full border border-signal-400/24 bg-signal-500/12 px-4 py-2 text-sm font-semibold text-signal-400">
@@ -96,12 +101,12 @@ export default function CatalogsPageClient({ initialBrand }: CatalogsPageClientP
           <div className="surface-panel-light rounded-[2rem] p-6 sm:p-8">
             <div className="flex flex-col gap-8 xl:flex-row xl:items-start xl:justify-between">
               <div className="max-w-2xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">Filter controls</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">Browse by need</p>
                 <h2 className="mt-3 font-display text-4xl font-bold tracking-[-0.05em] text-ink-950">
-                  Brand-led navigation, with search when you need it.
+                  Sort by trusted brand or product category.
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-ink-700">
-                  This page is now optimized for the actual job: narrowing to a trusted brand and opening the right catalog fast.
+                  Buyers often already know the brand they trust or the category they need. These filters make that process simpler and faster.
                 </p>
               </div>
 
@@ -139,11 +144,7 @@ export default function CatalogsPageClient({ initialBrand }: CatalogsPageClientP
                   Filter by category
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setActiveCategory("all")}
-                    className={chipClass(activeCategory === "all")}
-                  >
+                  <button type="button" onClick={() => setActiveCategory("all")} className={chipClass(activeCategory === "all")}>
                     All categories
                   </button>
                   {categories.map((category) => (
@@ -203,14 +204,71 @@ export default function CatalogsPageClient({ initialBrand }: CatalogsPageClientP
               </AnimatePresence>
             </motion.div>
           ) : (
-            <div className="mt-8 rounded-[2rem] border border-dashed border-white/14 bg-white/4 px-6 py-16 text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/6">
-                <Search className="h-6 w-6 text-sand-100/60" />
+            <div className="mt-8 rounded-[2rem] border border-dashed border-white/14 bg-white/4 px-6 py-10 sm:px-8 sm:py-12">
+              <div className="mx-auto flex max-w-4xl flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+                <div className="max-w-2xl">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/6">
+                    <Search className="h-6 w-6 text-sand-100/60" />
+                  </div>
+                  <h3 className="mt-6 font-display text-3xl font-bold tracking-[-0.05em] text-sand-50">
+                    No matching catalogs found
+                  </h3>
+                  <p className="mt-3 max-w-xl text-sm leading-7 text-sand-100/66">
+                    Nothing matches the current combination of search, brand, and category. Try a nearby brand or category,
+                    or clear the filters to return to the full catalog library.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setActiveBrand("all");
+                      setActiveCategory("all");
+                    }}
+                    className="button-secondary mt-6"
+                  >
+                    Show all catalogs
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2 lg:min-w-[24rem]">
+                  <div className="rounded-[1.5rem] border border-white/8 bg-white/5 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-100/58">
+                      Try another brand
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {suggestedBrands.map((brand) => (
+                        <button
+                          key={brand.slug}
+                          type="button"
+                          onClick={() => setActiveBrand(brand.slug)}
+                          className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm font-medium text-sand-50 transition hover:border-signal-400/34 hover:text-signal-400"
+                        >
+                          {brand.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-[1.5rem] border border-white/8 bg-white/5 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-100/58">
+                      Nearby categories
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {suggestedCategories.map((category) => (
+                        <button
+                          key={category}
+                          type="button"
+                          onClick={() => setActiveCategory(category)}
+                          className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm font-medium text-sand-50 transition hover:border-signal-400/34 hover:text-signal-400"
+                        >
+                          {category}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="mt-6 font-display text-3xl font-bold tracking-[-0.05em] text-sand-50">No matching catalogs found</h3>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-sand-100/66">
-                Try widening the search, switching brands, or clearing your active filters to see the full library again.
-              </p>
             </div>
           )}
         </div>

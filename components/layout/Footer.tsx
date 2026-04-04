@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Clock3, Mail, MapPin, Phone } from "lucide-react";
 import { brands } from "@/data/brands";
+import { seoPages } from "@/data/seo-pages";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/8 bg-[rgba(7,11,17,0.94)] text-sand-50">
       <div className="page-shell py-16 sm:py-20">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.7fr_0.8fr_0.9fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.65fr_0.8fr_0.85fr_0.95fr]">
           <div className="space-y-6">
             <div className="flex items-center gap-4">
               <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/6">
@@ -17,13 +18,13 @@ export default function Footer() {
               <div>
                 <p className="font-display text-xl font-bold tracking-[-0.04em]">Devki Nandan & Sons</p>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/58">
-                  Premium electrical supply since 1975
+                  Established 1957
                 </p>
               </div>
             </div>
 
             <p className="max-w-md text-sm leading-7 text-sand-100/70">
-              Built for contractors, retailers, architects, and procurement teams that need dependable brands, fast answers, and catalog-led decision making.
+              Serving households, retailers, contractors, and institutions with dependable brands, practical guidance, and steady supply support.
             </p>
 
             <a
@@ -72,6 +73,19 @@ export default function Footer() {
           </div>
 
           <div>
+            <h3 className="font-display text-lg font-bold text-sand-50">Popular Searches</h3>
+            <ul className="mt-5 space-y-3 text-sm text-sand-100/68">
+              {seoPages.map((page) => (
+                <li key={page.slug}>
+                  <Link href={`/${page.slug}`} className="transition hover:text-sand-50">
+                    {page.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <h3 className="font-display text-lg font-bold text-sand-50">Reach Us</h3>
             <ul className="mt-5 space-y-4 text-sm text-sand-100/68">
               <li className="flex items-start gap-3">
@@ -88,8 +102,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-copper-400" />
-                <a href="mailto:dns.rampur@gmail.com" className="transition hover:text-sand-50">
-                  dns.rampur@gmail.com
+                <a href="mailto:puneet@devkinandanandsons.com" className="transition hover:text-sand-50">
+                  puneet@devkinandanandsons.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -108,7 +122,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/8 pt-6 text-xs text-sand-100/48 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Devki Nandan & Sons. All rights reserved.</p>
-          <p>Catalog-first procurement experience for wholesale, retail, and project supply.</p>
+          <p>Electrical goods, trusted brands, and supply support for retail, wholesale, and project requirements.</p>
         </div>
       </div>
     </footer>

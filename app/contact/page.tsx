@@ -8,14 +8,14 @@ import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 const CONTACT_PATHS = [
   {
     title: "General inquiry",
-    description: "Use this when you want product guidance, a brand recommendation, or a quick first conversation.",
+    description: "Reach out for product guidance, brand suggestions, or help identifying the right range for your requirement.",
     href: getWhatsAppLink(WHATSAPP_MESSAGES.contact),
     cta: "Open WhatsApp chat",
     icon: MessageCircle,
   },
   {
     title: "Bulk or project support",
-    description: "Best for contractors, procurement teams, or commercial requirements that need a direct response.",
+    description: "Best for contractors, institutions, retailers, and commercial requirements that need direct follow-up.",
     href: getWhatsAppLink(WHATSAPP_MESSAGES.bulk),
     cta: "Start bulk inquiry",
     icon: Building2,
@@ -30,19 +30,19 @@ export default function ContactPage() {
         <div className="page-shell">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] lg:items-end">
             <SectionHeading
-              eyebrow="Project contact"
-              title="A contact page that helps people choose the right path, not just locate your details."
-              subtitle="The redesign makes inquiry intent clearer by separating general contact, bulk support, and physical store information."
+              eyebrow="Contact"
+              title="Get in touch for product guidance, catalog support, and supply requirements."
+              subtitle="Whether the requirement is for a household, retail counter, contractor need, or project supply, the business stays accessible and responsive."
               invert
             />
 
             <div className="surface-panel rounded-[2rem] p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">Best way to use this page</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">Direct business support</p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-[-0.05em] text-sand-50">
-                Start with the inquiry type that matches your urgency.
+                Choose the path that best matches your requirement.
               </h2>
               <p className="mt-4 text-sm leading-7 text-sand-100/70">
-                This route keeps the faster, higher-intent actions visible first, while still preserving full business details for visitors who need them.
+                Some customers need quick product guidance, while others need quotations, brand options, or bulk support. Both can begin here.
               </p>
             </div>
           </div>
@@ -54,9 +54,9 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
               <SectionHeading
-                eyebrow="Contact routes"
-                title="Two high-intent paths now lead the page."
-                subtitle="These actions are designed for the people most likely to convert quickly: buyers, contractors, and project coordinators."
+                eyebrow="How to reach us"
+                title="Direct contact for both everyday and project-based requirements."
+                subtitle="These are the most useful routes for customers who want quick guidance or a faster response on supply needs."
               />
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -91,16 +91,16 @@ export default function ContactPage() {
 
             <div className="surface-panel rounded-[2rem] p-7 sm:p-9">
               <SectionHeading
-                eyebrow="What helps us respond faster"
-                title="A better inquiry usually starts with a better brief."
-                subtitle="The new contact flow encourages people to share specifics instead of sending low-context messages."
+                eyebrow="Helpful details to share"
+                title="A clear requirement helps us respond better."
+                subtitle="A little context helps the business suggest the right brands, product ranges, and supply route more quickly."
                 invert
               />
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {[
                   "Brand or category you are considering",
-                  "Whether the requirement is retail or project-based",
+                  "Whether the requirement is for home, retail, or project use",
                   "Approximate quantity or scale of requirement",
                   "Preferred response channel and timeline",
                 ].map((item) => (
@@ -136,8 +136,8 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-3 text-sm text-ink-700">
                   <Mail className="h-5 w-5 shrink-0 text-signal-500" />
-                  <a href="mailto:dns.rampur@gmail.com" className="transition hover:text-ink-950">
-                    dns.rampur@gmail.com
+                  <a href="mailto:puneet@devkinandanandsons.com" className="transition hover:text-ink-950">
+                    puneet@devkinandanandsons.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-ink-700">
