@@ -6,6 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { brands } from "@/data/brands";
 import { getSeoPage, seoPages } from "@/data/seo-pages";
 import { getAllCatalogs } from "@/lib/catalog-store";
+import { BUSINESS_NAME, createPageMetadata } from "@/lib/seo";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 type PageProps = {
@@ -26,19 +27,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  return {
+  return createPageMetadata({
     title: page.metaTitle,
     description: page.description,
-    alternates: {
-      canonical: `/${page.slug}`,
-    },
-    openGraph: {
-      title: `${page.metaTitle} | Devki Nandan & Sons`,
-      description: page.description,
-      url: `/${page.slug}`,
-      type: "website",
-    },
-  };
+    path: `/${page.slug}`,
+    keywords: [page.title, `${page.title} ${BUSINESS_NAME}`, "electrical supplier near Rampur Bushahr"],
+  });
 }
 
 export default async function SeoLandingPage({ params }: PageProps) {

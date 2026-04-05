@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppCTA from "@/components/ui/WhatsAppCTA";
+import { BUSINESS_DESCRIPTION, BUSINESS_NAME, DEFAULT_KEYWORDS, SITE_URL } from "@/lib/seo";
 
 const displayFont = Space_Grotesk({
   subsets: ["latin"],
@@ -21,30 +22,29 @@ const bodyFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.devkinandanandsons.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Devki Nandan & Sons | Electrical Goods & Project Supply",
-    template: "%s | Devki Nandan & Sons",
+    default: `${BUSINESS_NAME} | Electrical Goods & Project Supply`,
+    template: `%s | ${BUSINESS_NAME}`,
   },
-  description:
-    "Established in 1957, Devki Nandan & Sons supplies trusted electrical brands, catalog support, and dependable project assistance in Rampur Bushahr and across Himachal Pradesh.",
-  keywords: [
-    "electrical goods Himachal Pradesh",
-    "bulk electrical supply",
-    "electrical catalogs",
-    "project procurement",
-    "Devki Nandan and Sons",
-  ],
+  description: BUSINESS_DESCRIPTION,
+  keywords: DEFAULT_KEYWORDS,
+  applicationName: BUSINESS_NAME,
+  category: "Electrical goods and project supply",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Devki Nandan & Sons | Electrical Goods & Project Supply",
-    description:
-      "Established in 1957, Devki Nandan & Sons serves homes, retailers, contractors, and project teams with trusted electrical brands and dependable supply support.",
+    title: `${BUSINESS_NAME} | Electrical Goods & Project Supply`,
+    description: BUSINESS_DESCRIPTION,
     type: "website",
-    siteName: "Devki Nandan & Sons",
+    siteName: BUSINESS_NAME,
     url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${BUSINESS_NAME} | Electrical Goods & Project Supply`,
+    description: BUSINESS_DESCRIPTION,
   },
   robots: {
     index: true,
