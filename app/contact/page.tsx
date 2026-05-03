@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Building2, Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import ContactForm from "@/components/ui/ContactForm";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 const CONTACT_PATHS = [
@@ -50,8 +51,8 @@ export default function ContactPage() {
       </section>
 
       <section className="pb-24">
-        <div className="page-shell grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
-          <div className="space-y-8">
+        <div className="page-shell space-y-8">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
             <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
               <SectionHeading
                 eyebrow="How to reach us"
@@ -89,15 +90,84 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="surface-panel rounded-[2rem] p-7 sm:p-9">
-              <SectionHeading
-                eyebrow="Helpful details to share"
-                title="A clear requirement helps us respond better."
-                subtitle="A little context helps the business suggest the right brands, product ranges, and supply route more quickly."
-                invert
-              />
+            <div className="space-y-8">
+              <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">Store and support details</p>
+                <div className="mt-6 space-y-5">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-signal-500" />
+                    <div className="text-sm leading-7 text-ink-700">
+                      DEVKI NANDAN AND SONS
+                      <br />
+                      Main Market,
+                      <br />
+                      Rampur Bushahr, Himachal Pradesh 172001
+                      <br />
+                      India
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-ink-700">
+                    <Phone className="h-5 w-5 shrink-0 text-signal-500" />
+                    <a href="tel:+919418000309" className="transition hover:text-ink-950">
+                      +91 94180 00309
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-ink-700">
+                    <Mail className="h-5 w-5 shrink-0 text-signal-500" />
+                    <a href="mailto:puneet@devkinandanandsons.com" className="transition hover:text-ink-950">
+                      puneet@devkinandanandsons.com
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-ink-700">
+                    <Clock3 className="h-5 w-5 shrink-0 text-signal-500" />
+                    <span>Mon-Sat: 9AM-7PM IST</span>
+                  </div>
+                </div>
+              </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <div className="surface-panel rounded-[2rem] p-2">
+                <div className="overflow-hidden rounded-[1.5rem]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3412.79!2d77.6293977!3d31.4496762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3905c112dd0cc3ed%3A0x4590f92665b5f35d!2sDEVKI+NANDAN+AND+SONS!5e0!3m2!1sen!2sin!4v1711350000000!5m2!1sen!2sin"
+                    width="100%"
+                    height="340"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Devki Nandan and Sons location"
+                    className="block w-full grayscale contrast-125"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="surface-panel rounded-[2rem] p-7 sm:p-9">
+              <div className="mb-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">Send us a message</p>
+                <h2 className="mt-3 font-display text-2xl font-bold tracking-[-0.05em] text-sand-50 sm:text-3xl">
+                  Prefer a form? We'll get back to you within 24 hours.
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-sand-100/70">
+                  Fill in your details and we'll reach out directly. No WhatsApp needed.
+                </p>
+              </div>
+              <ContactForm />
+            </div>
+
+            <div className="surface-panel rounded-[2rem] p-7 sm:p-9">
+              <div className="mb-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">Helpful details to share</p>
+                <h2 className="mt-3 font-display text-2xl font-bold tracking-[-0.05em] text-sand-50 sm:text-3xl">
+                  A clear requirement helps us respond better.
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-sand-100/70">
+                  A little context helps the business suggest the right brands, product ranges, and supply route more quickly.
+                </p>
+              </div>
+              <div className="space-y-4">
                 {[
                   "Brand or category you are considering",
                   "Whether the requirement is for home, retail, or project use",
@@ -108,58 +178,6 @@ export default function ContactPage() {
                     {item}
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">Store and support details</p>
-              <div className="mt-6 space-y-5">
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-signal-500" />
-                  <div className="text-sm leading-7 text-ink-700">
-                    DEVKI NANDAN AND SONS
-                    <br />
-                    Main Market, Rajpur
-                    <br />
-                    Rampur Bushahr, Himachal Pradesh 172001
-                    <br />
-                    India
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-ink-700">
-                  <Phone className="h-5 w-5 shrink-0 text-signal-500" />
-                  <a href="tel:+919418000309" className="transition hover:text-ink-950">
-                    +91 94180 00309
-                  </a>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-ink-700">
-                  <Mail className="h-5 w-5 shrink-0 text-signal-500" />
-                  <a href="mailto:puneet@devkinandanandsons.com" className="transition hover:text-ink-950">
-                    puneet@devkinandanandsons.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-ink-700">
-                  <Clock3 className="h-5 w-5 shrink-0 text-signal-500" />
-                  <span>Mon-Sat: 9AM-7PM IST</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="surface-panel rounded-[2rem] p-2">
-              <div className="overflow-hidden rounded-[1.5rem]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3412.79!2d77.6293977!3d31.4496762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3905c112dd0cc3ed%3A0x4590f92665b5f35d!2sDEVKI+NANDAN+AND+SONS!5e0!3m2!1sen!2sin!4v1711350000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="340"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Devki Nandan and Sons location"
-                  className="block w-full grayscale contrast-125"
-                />
               </div>
             </div>
           </div>

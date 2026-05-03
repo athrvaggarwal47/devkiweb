@@ -42,7 +42,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
       type="button"
       onClick={toggleTheme}
       className={cn(
-        "inline-flex h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition hover:-translate-y-0.5",
+        "inline-flex h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-signal-500",
         "border-white/10 bg-white/6 text-sand-50 backdrop-blur-md",
         "data-[theme=light]:border-ink-950/10 data-[theme=light]:bg-white/85",
         className

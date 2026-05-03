@@ -18,9 +18,18 @@ import {
 import { motion, type Variants } from "framer-motion";
 import CatalogCard from "@/components/ui/CatalogCard";
 import SectionHeading from "@/components/ui/SectionHeading";
+import InstagramFeed from "@/components/ui/InstagramFeed";
+import SocialLinks from "@/components/ui/SocialLinks";
 import { brands } from "@/data/brands";
 import type { Catalog } from "@/data/catalogs";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+
+// Custom Instagram icon
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+  </svg>
+);
 
 const STAGGER: Variants = {
   hidden: {},
@@ -215,6 +224,28 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
                     </p>
                   </div>
                 </div>
+
+                {/* Social follow section */}
+                <div className="mt-8 rounded-[1.5rem] border border-white/8 bg-gradient-to-br from-white/8 to-white/3 p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <InstagramIcon className="h-5 w-5 text-signal-400" />
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">
+                      Follow Our Journey
+                    </p>
+                  </div>
+                  <p className="text-sm leading-7 text-sand-100/70 mb-5">
+                    Stay updated with our latest products, projects, and electrical solutions on social media.
+                  </p>
+                  <a
+                    href="https://www.instagram.com/devkinandanandsons"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-signal-400/30 bg-signal-500/10 px-4 py-2.5 text-sm font-semibold text-signal-400 transition hover:bg-signal-500/20"
+                  >
+                    <InstagramIcon className="h-4 w-4" />
+                    Follow on Instagram
+                  </a>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -297,54 +328,9 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
         </div>
       </section>
 
-      <section className="section-space">
-        <div className="page-shell grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
-          <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
-            <SectionHeading
-              eyebrow="Partner brands"
-              title="Long-standing relationships with trusted electrical names."
-              subtitle="Well-known brands strengthen confidence for buyers who value quality, reliability, and the assurance of established product ranges."
-            />
+      <InstagramFeed />
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {brands.map((brand) => (
-                <Link
-                  key={brand.id}
-                  href={`/catalogs?brand=${brand.slug}`}
-                  className="rounded-[1.4rem] border border-ink-950/8 bg-white px-5 py-5 transition hover:-translate-y-1 hover:border-signal-500/24 hover:shadow-soft"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink-600">Brand partner</p>
-                  <h3 className="mt-3 font-display text-2xl font-bold tracking-[-0.04em] text-ink-950">{brand.name}</h3>
-                  <p className="mt-2 text-sm leading-6 text-ink-700">{brand.tagline}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="surface-panel rounded-[2rem] p-7 sm:p-9">
-            <SectionHeading
-              eyebrow="How we support requirements"
-              title="A practical path from inquiry to supply."
-              subtitle="The approach stays straightforward: understand the need, suggest the right options, and support the final purchase clearly."
-              invert
-            />
-
-            <div className="mt-8 space-y-5">
-              {SERVICE_STEPS.map((step, index) => (
-                <div key={step.title} className="rounded-[1.5rem] border border-white/8 bg-white/4 p-5">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-signal-500/14 text-sm font-bold text-signal-400">
-                      0{index + 1}
-                    </div>
-                    <h3 className="font-display text-2xl font-bold tracking-[-0.04em] text-sand-50">{step.title}</h3>
-                  </div>
-                  <p className="mt-4 text-sm leading-7 text-sand-100/66">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <SocialLinks />
 
       <section className="section-space">
         <div className="page-shell">

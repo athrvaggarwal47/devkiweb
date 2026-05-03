@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -59,10 +58,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${displayFont.variable} ${bodyFont.variable}`}>
-      <body className="flex min-h-screen flex-col antialiased">
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`
-            (() => {
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
               try {
                 const storedTheme = localStorage.getItem("theme");
                 const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
@@ -71,11 +70,19 @@ export default function RootLayout({
               } catch {
                 document.documentElement.dataset.theme = "dark";
               }
-            })();
-          `}
-        </Script>
+            })();`,
+          }}
+        />
+      </head>
+      <body className="flex min-h-screen flex-col antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-signal-500 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-signal-400"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="flex-1 w-full flex flex-col">{children}</main>
+        <main id="main-content" className="flex-1 w-full flex flex-col">{children}</main>
         <Footer />
         <WhatsAppCTA />
       </body>

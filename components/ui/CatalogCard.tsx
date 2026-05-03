@@ -1,5 +1,9 @@
-import { ArrowUpRight, Download, FileText } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { ArrowUpRight, Download, Eye, FileText } from "lucide-react";
 import type { Catalog } from "@/data/catalogs";
+import PDFViewer from "./PDFViewer";
 
 interface CatalogCardProps {
   catalog: Catalog;
@@ -45,6 +49,7 @@ const BRAND_STYLES: Record<string, { accent: string; surface: string }> = {
 };
 
 export default function CatalogCard({ catalog }: CatalogCardProps) {
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
   const isPdfCatalog = catalog.pdfUrl.toLowerCase().endsWith(".pdf");
   const palette =
     BRAND_STYLES[catalog.brandId] ??
@@ -54,13 +59,14 @@ export default function CatalogCard({ catalog }: CatalogCardProps) {
     } as const);
 
   return (
-    <a
-      href={catalog.pdfUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`Open ${catalog.title}`}
-      className="group block h-full"
-    >
+    <>
+      <PDFViewer
+        pdfUrl={catalog.pdfUrl}
+        title={catalog.title}
+        isOpen={isViewerOpen}
+        onClose={() => setIsViewerOpen(false)}
+      />
+      <div className="group block h-full">
       <article className="catalog-card flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-white/10 bg-[rgba(12,18,26,0.74)] shadow-panel transition duration-300 hover:-translate-y-1 hover:border-signal-400/40">
         <div className="relative aspect-[4/3] overflow-hidden p-6" style={{ background: palette.surface }}>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,242,232,0.18),transparent_24%)]" />
@@ -114,13 +120,30 @@ export default function CatalogCard({ catalog }: CatalogCardProps) {
           <div className="signal-divider" />
           <div className="flex items-center justify-between gap-4">
             <span className="catalog-card-brand text-xs font-medium uppercase tracking-[0.22em] text-sand-100/52">{catalog.brand}</span>
-            <span className="catalog-card-cta inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-sand-50 transition hover:border-signal-400/40 hover:bg-white/9">
-              <Download className="h-4 w-4" />
-              <span>{isPdfCatalog ? "Open PDF" : "View Catalog"}</span>
-            </span>
+            <div className="flex items-center gap-2">
+              {isPdfCatalog && (
+                <button
+                  onClick={() => setIsViewerOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-sand-50 transition hover:border-signal-400/40 hover:bg-white/9"
+                >
+                  <Eye className="h-4 w-4" />
+                  <span>View</span>
+                </button>
+              )}
+              <a
+                href={catalog.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="catalog-card-cta inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-sand-50 transition hover:border-signal-400/40 hover:bg-white/9"
+              >
+                <Download className="h-4 w-4" />
+                <span>{isPdfCatalog ? "Download" : "View Catalog"}</span>
+              </a>
+            </div>
           </div>
         </div>
       </article>
-    </a>
+    </div>
+    </>
   );
 }
