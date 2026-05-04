@@ -14,14 +14,18 @@ import {
   Warehouse,
   Waypoints,
   Zap,
+  Download,
+  Phone,
 } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import CatalogCard from "@/components/ui/CatalogCard";
 import SectionHeading from "@/components/ui/SectionHeading";
-import InstagramFeed from "@/components/ui/InstagramFeed";
 import SocialLinks from "@/components/ui/SocialLinks";
+import TestimonialsSection from "@/components/ui/TestimonialsSection";
+import TrustSignals from "@/components/ui/TrustSignals";
 import { brands } from "@/data/brands";
 import type { Catalog } from "@/data/catalogs";
+import { testimonials } from "@/data/testimonials";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 // Custom Instagram icon
@@ -137,7 +141,7 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
 
               <motion.h1
                 variants={FADE_UP}
-                className="max-w-4xl font-display text-5xl font-bold leading-[0.9] tracking-[-0.07em] text-sand-50 sm:text-6xl lg:text-[6rem]"
+                className="max-w-4xl font-display text-[2.75rem] font-bold leading-[0.9] tracking-[-0.07em] text-sand-50 sm:text-5xl md:text-6xl lg:text-[6rem]"
               >
                 Devki Nandan
                 <span className="block text-signal-400">& Sons</span>
@@ -145,19 +149,19 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
 
               <motion.p
                 variants={FADE_UP}
-                className="max-w-3xl font-display text-2xl font-semibold leading-[1.05] tracking-[-0.05em] text-sand-50/92 sm:text-3xl"
+                className="max-w-3xl font-display text-xl font-semibold leading-[1.15] tracking-[-0.04em] text-sand-50/92 sm:text-2xl md:text-3xl"
               >
                 Serving homes, retailers, contractors, and project teams with trusted electrical goods and dependable supply support.
               </motion.p>
 
-              <motion.p variants={FADE_UP} className="max-w-2xl text-base leading-8 text-sand-100/74 sm:text-lg">
+              <motion.p variants={FADE_UP} className="max-w-2xl text-sm leading-7 text-sand-100/74 sm:text-base md:text-lg">
                 From everyday household requirements to bulk project needs, the business is built on reliable brands, practical guidance,
                 and long-standing customer relationships.
               </motion.p>
 
-              <motion.div variants={FADE_UP} className="flex flex-col gap-4 sm:flex-row">
-                <Link href="/catalogs" className="button-primary">
-                  Browse Catalogs
+              <motion.div variants={FADE_UP} className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link href="/contact" className="button-primary">
+                  Get a Quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
@@ -166,9 +170,13 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
                   rel="noopener noreferrer"
                   className="button-secondary"
                 >
-                  Talk on WhatsApp
+                  Quick Inquiry
                   <MessageCircle className="h-4 w-4" />
                 </a>
+                <Link href="/catalogs" className="button-secondary">
+                  Browse Catalogs
+                  <FileStack className="h-4 w-4" />
+                </Link>
               </motion.div>
 
               <motion.div variants={FADE_UP} className="flex flex-wrap gap-3">
@@ -255,16 +263,16 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={STAGGER}
-            className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
+            className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
           >
             {HERO_STATS.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={FADE_UP}
-                className="rounded-[1.6rem] border border-white/8 bg-white/4 px-5 py-5 backdrop-blur"
+                className="rounded-[1.6rem] border border-white/8 bg-white/4 px-4 py-4 backdrop-blur sm:px-5 sm:py-5"
               >
-                <p className="font-display text-4xl font-bold tracking-[-0.05em] text-sand-50">{stat.value}</p>
-                <p className="mt-2 text-sm leading-6 text-sand-100/64">{stat.label}</p>
+                <p className="font-display text-3xl font-bold tracking-[-0.05em] text-sand-50 sm:text-4xl">{stat.value}</p>
+                <p className="mt-2 text-xs leading-5 text-sand-100/64 sm:text-sm sm:leading-6">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -328,7 +336,33 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
         </div>
       </section>
 
-      <InstagramFeed />
+      {/* Trust Signals Section */}
+      <section className="section-space">
+        <div className="page-shell">
+          <SectionHeading
+            eyebrow="Trusted by the community"
+            title="Serving Himachal Pradesh for nearly 7 decades"
+            subtitle="Our commitment to quality products and reliable service has earned the trust of contractors, retailers, and homeowners across the region."
+            invert
+            className="mb-12 text-center mx-auto max-w-3xl"
+          />
+          <TrustSignals />
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="section-space bg-gradient-to-b from-transparent via-ink-900/30 to-transparent">
+        <div className="page-shell">
+          <SectionHeading
+            eyebrow="Customer feedback"
+            title="What our customers say"
+            subtitle="Real experiences from contractors, retailers, and customers who trust us for their electrical supply needs."
+            invert
+            className="mb-12 text-center mx-auto max-w-3xl"
+          />
+          <TestimonialsSection testimonials={testimonials} />
+        </div>
+      </section>
 
       <SocialLinks />
 
@@ -360,7 +394,7 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link href="/contact" className="button-primary">
-                Start a project conversation
+                Get a Quote
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
@@ -369,7 +403,7 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
                 rel="noopener noreferrer"
                 className="button-secondary"
               >
-                Ask for supply support
+                Quick Inquiry
                 <MessageCircle className="h-4 w-4" />
               </a>
             </div>
@@ -392,13 +426,13 @@ export default function HomePageClient({ catalogs }: HomePageClientProps) {
             </div>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row lg:mt-0">
-              <Link href="/catalogs" className="button-primary">
-                Open Catalogs
+              <Link href="/contact" className="button-primary">
+                Get a Quote
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/contact" className="button-secondary">
-                Contact the Team
-                <ArrowRight className="h-4 w-4" />
+              <Link href="/catalogs" className="button-secondary">
+                View Catalogs
+                <FileStack className="h-4 w-4" />
               </Link>
             </div>
           </div>

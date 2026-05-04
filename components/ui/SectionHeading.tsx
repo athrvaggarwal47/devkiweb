@@ -6,6 +6,7 @@ interface SectionHeadingProps {
   subtitle?: string;
   centered?: boolean;
   invert?: boolean;
+  className?: string;
 }
 
 export default function SectionHeading({
@@ -14,9 +15,10 @@ export default function SectionHeading({
   subtitle,
   centered = false,
   invert = false,
+  className,
 }: SectionHeadingProps) {
   return (
-    <div className={cn("space-y-5", centered && "mx-auto text-center")}>
+    <div className={cn("space-y-5", centered && "mx-auto text-center", className)}>
       {eyebrow && (
         <div className={cn("eyebrow", centered && "mx-auto")}>
           <p>{eyebrow}</p>

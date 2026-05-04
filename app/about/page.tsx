@@ -2,195 +2,294 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, BadgeCheck, Building2, Clock3, Layers3, Users } from "lucide-react";
+import { ArrowRight, Award, Heart, Lightbulb, Shield, Sparkles, Target, Users2, Zap } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import InstagramFeed from "@/components/ui/InstagramFeed";
 import { brands } from "@/data/brands";
 
-const MILESTONES = [
+const FADE_UP = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.58, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const STAGGER = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const Handshake = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+  </svg>
+);
+
+const STORY_TIMELINE = [
   {
     year: "1957",
-    title: "The business begins",
-    description: "Devki Nandan & Sons was established with a simple commitment: dependable products, fair dealing, and practical support for local customers.",
+    title: "The Beginning",
+    description: "Founded with a vision to serve the electrical needs of Rampur Bushahr and surrounding regions with quality products and honest service.",
+    icon: Sparkles,
   },
   {
-    year: "Over the decades",
-    title: "Trust grows through relationships",
-    description: "Long-standing ties with reliable electrical brands and customers helped the business become a known and dependable name in the region.",
+    year: "1970s-1990s",
+    title: "Building Trust",
+    description: "Established strong partnerships with leading electrical brands. Became the go-to supplier for contractors and retailers across Himachal Pradesh.",
+    icon: Handshake,
+  },
+  {
+    year: "2000s",
+    title: "Expanding Reach",
+    description: "Expanded product range to include modern switchgear, lighting solutions, and project support. Served major infrastructure projects in the region.",
+    icon: Target,
   },
   {
     year: "Today",
-    title: "Still serving with the same values",
-    description: "The business continues to support households, retailers, contractors, and project buyers with clarity, responsiveness, and trusted product options.",
+    title: "Digital Transformation",
+    description: "Combining 69 years of experience with modern technology. Online catalog library, WhatsApp support, and seamless customer service.",
+    icon: Zap,
   },
 ];
 
-const OPERATING_VALUES = [
+const OUR_VALUES = [
   {
-    title: "Relationship-driven business",
-    description: "Customers return because they value consistency, honest guidance, and a supplier they can rely on over time.",
-    icon: Users,
+    title: "Quality First",
+    description: "We partner only with trusted brands that meet our quality standards. Every product we supply is backed by manufacturer warranties and our commitment.",
+    icon: Shield,
   },
   {
-    title: "Confidence through brands",
-    description: "Trusted partner brands help buyers feel assured about product quality, range depth, and long-term reliability.",
-    icon: BadgeCheck,
+    title: "Customer-Centric",
+    description: "From homeowners to large contractors, we treat every customer with the same respect and attention. Your project success is our success.",
+    icon: Heart,
   },
   {
-    title: "Practical and responsive support",
-    description: "The focus stays on understanding the requirement clearly and helping the customer move forward without unnecessary confusion.",
-    icon: Layers3,
+    title: "Expert Guidance",
+    description: "Our team brings decades of electrical industry knowledge. We help you choose the right products for your specific needs and budget.",
+    icon: Lightbulb,
+  },
+  {
+    title: "Community Focused",
+    description: "As a local business, we're invested in our community's growth. We support local contractors, institutions, and development projects.",
+    icon: Users2,
   },
 ];
 
-const NUMBERS = [
-  { label: "Years in business", value: "69+" },
-  { label: "Partner brands", value: `${brands.length}` },
-  { label: "Customer segments", value: "Home + Trade + Projects" },
-  { label: "Approach", value: "Direct and dependable" },
+const STATS = [
+  { value: "69+", label: "Years of Excellence" },
+  { value: "9", label: "Trusted Brands" },
+  { value: "500+", label: "Happy Contractors" },
+  { value: "200+", label: "Projects Completed" },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-32 pb-18 sm:pt-36 sm:pb-22">
-        <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top_left,rgba(185,133,71,0.16),transparent_30%),radial-gradient(circle_at_86%_6%,rgba(99,167,255,0.14),transparent_28%)]" />
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-32 pb-20 sm:pt-36 sm:pb-24">
+        <div className="absolute inset-x-0 top-0 h-[40rem] bg-[radial-gradient(circle_at_top_left,rgba(185,133,71,0.18),transparent_32%),radial-gradient(circle_at_86%_8%,rgba(99,167,255,0.16),transparent_30%)]" />
         <div className="page-shell">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-end">
-            <SectionHeading
-              eyebrow="About the business"
-              title="A trusted electrical business serving the region since 1957."
-              subtitle="Devki Nandan & Sons is built on long-term relationships, dependable brands, and practical support for both everyday and project-based requirements."
-              invert
-            />
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={STAGGER}
+            className="mx-auto max-w-4xl text-center"
+          >
+            <motion.div variants={FADE_UP} className="inline-flex items-center gap-2 rounded-full border border-copper-400/30 bg-copper-500/10 px-4 py-2 backdrop-blur">
+              <Award className="h-4 w-4 text-copper-400" />
+              <span className="text-sm font-semibold text-copper-400">Established 1957</span>
+            </motion.div>
 
-            <div className="surface-panel rounded-[2rem] p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-100/56">What defines the business</p>
-              <p className="mt-4 text-sm leading-7 text-sand-100/72">
-                Over the years, the business has earned trust by staying straightforward in the way it serves customers:
-                good products, clear advice, and dependable follow-through.
-              </p>
+            <motion.h1
+              variants={FADE_UP}
+              className="mt-8 font-display text-5xl font-bold leading-[0.95] tracking-[-0.06em] text-sand-50 sm:text-6xl lg:text-7xl"
+            >
+              69 Years of Powering
+              <span className="block text-signal-400">Himachal Pradesh</span>
+            </motion.h1>
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {NUMBERS.map((item) => (
-                  <div key={item.label} className="rounded-[1.4rem] border border-white/8 bg-white/5 p-4">
-                    <p className="font-display text-3xl font-bold tracking-[-0.05em] text-sand-50">{item.value}</p>
-                    <p className="mt-2 text-sm text-sand-100/60">{item.label}</p>
+            <motion.p
+              variants={FADE_UP}
+              className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-sand-100/80 sm:text-xl"
+            >
+              From a small shop in Rampur Bushahr to the region's trusted electrical supplier.
+              Three generations of serving homes, businesses, and infrastructure projects with quality and integrity.
+            </motion.p>
+
+            <motion.div variants={FADE_UP} className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Link href="/contact" className="button-primary">
+                Get a Quote
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/catalogs" className="button-secondary">
+                Browse Catalogs
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Stats Grid */}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={STAGGER}
+            className="mt-20 grid grid-cols-2 gap-4 lg:grid-cols-4"
+          >
+            {STATS.map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={FADE_UP}
+                className="surface-panel rounded-2xl p-6 text-center"
+              >
+                <p className="font-display text-4xl font-bold text-signal-400">{stat.value}</p>
+                <p className="mt-2 text-sm text-sand-100/70">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Story Timeline */}
+      <section className="section-space">
+        <div className="page-shell">
+          <SectionHeading
+            eyebrow="Our Journey"
+            title="A Legacy Built on Trust and Quality"
+            subtitle="From humble beginnings to becoming Himachal Pradesh's preferred electrical supplier."
+            invert
+            className="mb-16 text-center mx-auto max-w-3xl"
+          />
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {STORY_TIMELINE.map((milestone, index) => {
+              const Icon = milestone.icon;
+              return (
+                <motion.div
+                  key={milestone.year}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="surface-panel rounded-2xl p-7"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-signal-500/20 to-copper-400/20">
+                      <Icon className="h-6 w-6 text-signal-400" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="inline-flex rounded-full border border-copper-400/30 bg-copper-500/10 px-3 py-1 text-xs font-semibold text-copper-400">
+                        {milestone.year}
+                      </div>
+                      <h3 className="mt-3 font-display text-2xl font-bold text-sand-50">
+                        {milestone.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-sand-100/70">
+                        {milestone.description}
+                      </p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="section-space">
+      {/* Our Values */}
+      <section className="section-space bg-gradient-to-b from-transparent via-ink-900/30 to-transparent">
         <div className="page-shell">
-          <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
-            <SectionHeading
-              eyebrow="Business journey"
-              title="A history shaped by dependable service and repeat trust."
-              subtitle="The story matters because it explains why customers continue to rely on the business across generations."
-            />
+          <SectionHeading
+            eyebrow="Our Values"
+            title="What Drives Us Every Day"
+            subtitle="The principles that have guided us for nearly seven decades and continue to shape how we serve our customers."
+            invert
+            className="mb-16 text-center mx-auto max-w-3xl"
+          />
 
-            {/* Visual representation of the business */}
-            <div className="mt-8 mb-8 overflow-hidden rounded-[1.7rem] border border-ink-950/8 bg-gradient-to-br from-ink-950 via-ink-900 to-ink-950 p-8 sm:p-12">
-              <div className="flex flex-col items-center justify-center text-center">
-                <div className="rounded-full border-2 border-signal-400/30 bg-signal-500/10 px-6 py-3 backdrop-blur">
-                  <p className="font-display text-5xl font-bold text-sand-50 sm:text-6xl">1957</p>
-                </div>
-                <p className="mt-6 max-w-2xl font-display text-2xl font-semibold leading-tight text-sand-50/90 sm:text-3xl">
-                  Devki Nandan & Sons
-                </p>
-                <p className="mt-3 text-sm uppercase tracking-[0.24em] text-sand-100/60">
-                  Main Market, Rajpur • Rampur Bushahr, Himachal Pradesh
-                </p>
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                  {brands.slice(0, 6).map((brand) => (
-                    <div
-                      key={brand.slug}
-                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-sand-50/80 backdrop-blur"
-                    >
-                      {brand.name}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 grid gap-5 lg:grid-cols-3">
-              {MILESTONES.map((item) => (
-                <motion.article
-                  key={item.year}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {OUR_VALUES.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={value.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.45 }}
-                  className="rounded-[1.7rem] border border-ink-950/8 bg-white p-6 shadow-soft"
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="surface-panel rounded-2xl p-6"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">{item.year}</p>
-                  <h3 className="mt-4 font-display text-3xl font-bold tracking-[-0.05em] text-ink-950">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-ink-700">{item.description}</p>
-                </motion.article>
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-signal-500/20 to-copper-400/20">
+                    <Icon className="h-6 w-6 text-signal-400" />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-bold text-sand-50">
+                    {value.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-sand-100/70">
+                    {value.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Brands */}
+      <section className="section-space">
+        <div className="page-shell">
+          <SectionHeading
+            eyebrow="Trusted Partners"
+            title="We Work With the Best Brands"
+            subtitle="Our partnerships with leading electrical manufacturers ensure you get quality products backed by reliable warranties."
+            invert
+            className="mb-12 text-center mx-auto max-w-3xl"
+          />
+
+          <div className="surface-panel rounded-2xl p-8">
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {brands.map((brand) => (
+                <div
+                  key={brand.slug}
+                  className="rounded-xl border border-white/10 bg-white/5 px-6 py-3 backdrop-blur transition hover:border-signal-400/30 hover:bg-white/10"
+                >
+                  <p className="font-display text-lg font-semibold text-sand-50">{brand.name}</p>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-space">
-        <div className="page-shell grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
-          <div className="surface-panel rounded-[2rem] p-7 sm:p-9">
-            <SectionHeading
-              eyebrow="How the business works"
-              title="Trusted products, clear advice, and responsive support."
-              subtitle="That practical approach has helped the business stay relevant for households, trade buyers, and project requirements alike."
-              invert
-            />
+      {/* Instagram Feed */}
+      <InstagramFeed />
 
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {OPERATING_VALUES.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.title} className="rounded-[1.5rem] border border-white/8 bg-white/5 p-5">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-signal-500/12 text-signal-400">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="mt-5 font-display text-2xl font-bold tracking-[-0.04em] text-sand-50">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-sand-100/66">{item.description}</p>
-                  </div>
-                );
-              })}
+      {/* CTA Section */}
+      <section className="pb-24">
+        <div className="page-shell">
+          <div className="overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(99,167,255,0.14),rgba(247,242,232,0.06),rgba(185,133,71,0.12))] p-8 text-center sm:p-12">
+            <h2 className="font-display text-4xl font-bold tracking-[-0.05em] text-sand-50 sm:text-5xl">
+              Ready to Start Your Project?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-sand-100/74 sm:text-lg">
+              Whether you're a homeowner, contractor, or project manager, we're here to help you find the right electrical solutions.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Link href="/contact" className="button-primary">
+                Get a Quote
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/catalogs" className="button-secondary">
+                Browse Catalogs
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-          </div>
-
-          <div className="surface-panel-light rounded-[2rem] p-7 sm:p-9">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-600">What people should understand</p>
-            <div className="mt-6 space-y-5">
-              <div className="rounded-[1.5rem] border border-ink-950/8 bg-white p-5">
-                <div className="flex items-center gap-3">
-                  <Clock3 className="h-5 w-5 text-signal-500" />
-                  <h3 className="font-display text-2xl font-bold tracking-[-0.04em] text-ink-950">This is an established business</h3>
-                </div>
-                <p className="mt-3 text-sm leading-7 text-ink-700">
-                  More than six decades of service gives customers confidence that the business values continuity, reliability, and reputation.
-                </p>
-              </div>
-
-              <div className="rounded-[1.5rem] border border-ink-950/8 bg-white p-5">
-                <div className="flex items-center gap-3">
-                  <Building2 className="h-5 w-5 text-signal-500" />
-                  <h3 className="font-display text-2xl font-bold tracking-[-0.04em] text-ink-950">This is a dependable supply partner</h3>
-                </div>
-                <p className="mt-3 text-sm leading-7 text-ink-700">
-                  The business is positioned to support real purchase decisions, repeat buying, and project conversations, not just one-time browsing.
-                </p>
-              </div>
-            </div>
-
-            <Link href="/contact" className="button-primary mt-8">
-              Start a conversation
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </div>
       </section>

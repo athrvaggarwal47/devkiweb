@@ -57,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${displayFont.variable} ${bodyFont.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${displayFont.variable} ${bodyFont.variable}`} data-scroll-behavior="smooth">
       <head>
         <script
           dangerouslySetInnerHTML={{

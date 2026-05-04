@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Building2, Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import ContactForm from "@/components/ui/ContactForm";
+import ContactForm from "@/components/ui/ContactFormImproved";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 const CONTACT_PATHS = [

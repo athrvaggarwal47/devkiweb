@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X, Search } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import SearchDialog from "@/components/ui/SearchDialog";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -20,6 +21,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [catalogs, setCatalogs] = useState<any[]>([]);
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -30,6 +33,24 @@ export default function Navbar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Load catalogs for search from API
+  useEffect(() => {
+    const loadCatalogs = async () => {
+      try {
+        const res = await fetch('/api/catalogs');
+        if (res.ok) {
+          const data = await res.json();
+          setCatalogs(data);
+        }
+      } catch (err) {
+        // Silently fail - search will work once catalogs load
+        console.debug('Catalogs not loaded yet for search');
+      }
+    };
+
+    loadCatalogs();
   }, []);
 
   // Close mobile menu on Escape key
@@ -45,6 +66,7 @@ export default function Navbar() {
 
   return (
     <>
+      <SearchDialog catalogs={catalogs} isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -61,7 +83,7 @@ export default function Navbar() {
         >
           <Link href="/" className="group flex shrink-0 items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(145deg,rgba(247,242,232,0.12),rgba(247,242,232,0.02))] transition duration-300 group-hover:scale-105">
-              <Image src="/logo.png" alt="Devki Nandan Logo" width={28} height={28} className="object-contain" />
+              <Image src="/logo.png" alt="Devki Nandan Logo" width={28} height={28} className="object-contain" style={{ width: 'auto', height: 'auto' }} />
             </span>
             <span className="hidden flex-col sm:flex">
               <span className="font-display text-base font-bold leading-none tracking-[-0.03em] text-sand-50">
@@ -99,6 +121,18 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className={cn(
+                "rounded-full border p-2.5 transition-all",
+                isScrolled || !isHome
+                  ? "border-white/10 bg-white/6 text-sand-50 hover:bg-white/10"
+                  : "border-white/12 bg-black/18 text-sand-50 backdrop-blur-md hover:bg-black/25"
+              )}
+              aria-label="Search catalogs"
+            >
+              <Search className="h-5 w-5" />
+            </button>
             <ThemeToggle
               className={cn(
                 isScrolled || !isHome
@@ -116,7 +150,7 @@ export default function Navbar() {
               Catalog Library
             </Link>
             <Link href="/contact" className="button-primary hidden lg:inline-flex">
-              Start a Project
+              Get a Quote
               <ArrowUpRight className="h-4 w-4" />
             </Link>
 
@@ -171,7 +205,7 @@ export default function Navbar() {
                   Explore trusted brands, review product catalogs, and get in touch directly for supply support.
                 </p>
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="button-primary w-full">
-                  Start a Project
+                  Get a Quote
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </div>

@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
               "img-src 'self' data: https: blob:",
               "font-src 'self' data:",
               "connect-src 'self' https://www.instagram.com https://graph.instagram.com",
-              "frame-src 'self' https://www.instagram.com",
+              "frame-src 'self' https://www.instagram.com https://www.google.com https://maps.google.com",
               "media-src 'self' https://www.instagram.com https://scontent.cdninstagram.com",
             ].join("; "),
           },
